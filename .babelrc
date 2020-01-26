@@ -1,0 +1,5 @@
+{
+    "presets": ["@babel/preset-env"], //use it to convert for ES < 6 versions
+    "plugins": ["@babel/plugin-proposal-object-rest-spread",
+                "@babel/plugin-transform-async-to-generator"] //create an new plugins array
+}

@@ -1,0 +1,178 @@
+ "scripts": {
+    "dev": "babel ./main.js -o ./bundle.js -w"
+  }
+
+  the command "scripts" create an abreviation of all ahead "dev"(use yarn dev in terminal), 
+  that means, execute Babel using main.js -o(sending for) bundle.js -w(automatically change main for bundle) 
+
+---------------------------------------------------------------------------------
+  classes:
+
+  method 'constructor' : used for variable declaration and actions triggered by the
+  activation of an object
+
+  static method : used one per class(static don't depend of any information about the class) 
+  to give one return only 
+
+  variables const can only be alterated if it was created as object or array
+
+  escope variables(let) are created only in a function or inside {}, out of function the variable does not exist
+
+---------------------------------------------------------------------------------
+  array manipulations: 
+
+  const newArr = arr.map(function(item){
+    return item*2;
+  }) //create an new array that will be receive arr.map(go through) and an function
+  as parameter(function(item){}) in other words, this allow for manipulation of the 
+  elements. 
+  this enables to use other params inside the function, like, index(each element position)
+
+  const sum = arr.reduce(function(total, next){
+    return total + next;
+  }) //adds all elements of a vector
+
+  const filter = arr.filter(function(item){
+    return item % 2 === 0;
+  }) //return only true or false
+
+  const find = arr.find(function(item){
+    return item = 4;
+  }) //return true or false(undefined) depending on return 
+
+---------------------------------------------------------------------------------
+  arrow functions: 
+
+  const newArr = arr.map((item) => {
+    return item*2;
+  } //is an abreviation of anonimous functions(without name)
+
+
+  const newArr = arr.map(item => {
+    return item*2; // () can be skiped if there's only one parameter
+
+  const newArr = arr.map(item => item * 2);
+  //remove the return when there's only the return inside the function
+
+  const test = () => 3;
+  // can be used to create an function with variables, but isn't recomended
+
+  const test = () => ({ nome: 'Diego'});
+  //objects do have to use ({ x x x x x }) on return 
+
+---------------------------------------------------------------------------------
+default values:
+
+const sum = (a = 3, b = 5) => a + b;
+console.log(soma(1)); return : 6
+console.log(soma());  return : 8
+//setting default values for variables (a,b) each console.log can return a number,
+instead NaN(any impossible number)
+
+---------------------------------------------------------------------------------
+dismemberment:
+
+const user = {
+  name: 'Haniel',
+  age: 21,
+  adress: {
+    city: 'Campinas'
+    state: 'SP'
+  }
+}
+const { name, age, adress: { city } } = user;
+//to search any information inside an object, dismemberment is used(last code line)
+
+another case os dismemberment:
+
+function showName({ name }) {
+  console.log(name);
+}
+
+---------------------------------------------------------------------------------
+rest/spread operators
+
+rest:
+
+const user = {
+    name: 'haniel',
+    age: 23,
+    hair: 'short',
+};
+const { name, ...rest } = user;
+console.log(name);
+console.log(rest);
+//show name and '...rest' the all other things (can be used in arrays)
+
+function sum = (...params) => params.reduce((total,next) => total + next);
+console.log(soma(1,3,4)) //an example
+
+function sum(a, b, ...params){
+  return params;
+}
+console.log(sum(1, 3, 4, 5, 6)); //save values of 'a' and 'b' and params is the rest
+
+spread:
+
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+const arr3 = [...arr1, ...arr2];
+console.log(arr3); //basically connect two arrays into only one
+
+
+const user1 = {
+  name: 'haniel',
+  age: 23,
+  hair: 'short',
+};
+const user2 = {...user1, nome: 'gabriel'}; //used to alter one information into an object
+
+---------------------------------------------------------------------------------
+Template Literals:
+
+const name = 'haniel';
+const age = 23;
+
+console.log(`My name is ${name} and i'm ${age} anos`); //used for insert variables into stringo
+
+---------------------------------------------------------------------------------
+Object Short Sintax:
+
+const name = 'haniel';
+const age = 23;
+
+const user = {
+  name,
+  age,
+  hair: short,
+}; //when there are variables outside an object, there's no reason to set, for example:
+
+name: name 
+
+---------------------------------------------------------------------------------
+Export/Import(requires webpack)
+
+export default function(){} ------------ import function from './functions' //default can be used as the "main" function when exports
+/when there's only one function inside the file, in import any name can be used
+
+export function(){}, export function2(){} ------------ import { function, function2 } from './functions' 
+
+rename functions import: 
+
+import {sum as sumFunction} from './functions'
+console.log(sumFunction(1,2));
+
+function files that have default and other functions:
+import sum, {sub, mult} from './functions'
+
+call all functions: 
+import * as functions from './functions'
+console.log(functions) //show all existing functions
+console.log(functions.sum) ;
+console.log(functions.sub);
+
+call back hidden bundle.js: 
+in package.json/scripts: "build": "webpack --mode=production" 
+
+
+

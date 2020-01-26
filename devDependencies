@@ -1,0 +1,16 @@
+All dependencies required to run any explanation:
+note: using NodeJS for example, these commands probably are not necessary 
+
+yarn:
+
+init (create package.json)
+add @babel/cli (allow babel's commands)
+add @babel/preset-env (install babel dependencies(need to put in .babelrc as preset))
+add @babel/core
+add @babel/plugin-proposal-object-rest-spread(need to put in .babelrc as plugin)
+add webpack webpack-cli -D
+add babel-loader@8.0.0-beta.0 -D (to run into webpack)
+add webpack-dev-server -dependencies
+add @babel/plugin-transform-async-to-generator -D
+add @babel/polyfill -D
+
